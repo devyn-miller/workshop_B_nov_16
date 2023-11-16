@@ -1,0 +1,15 @@
+{{ block title }}Punishment stage{{ endblock }} {{ block content }}
+You contributed {{ player.contribution }}. Here are the other players' contributions:
+
+{{ for p in other_players }}
+Player {{ p.id_in_group }}	{{ p.contribution }}
+{{ endfor }}
+You can punish each player up to {{ C.MAX_PUNISHMENT }} points. Each punishment point will reduce the player's payoff by 1, but will incur a cost to you, according to the table at the bottom.
+
+{{ formfields }}
+Punishment points	Cost to you
+{{ for entry in schedule }}
+{{ entry.0 }}	{{ entry.1|cu }}
+{{ endfor }}
+{{ next_button }} {{ endblock }}
+
